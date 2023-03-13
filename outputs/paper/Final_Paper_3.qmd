@@ -1,0 +1,43 @@
+---
+title: "'Death Con Three on the Jews': An Analysis of Jewish Life in America Amid Trends of Growing Antisemitism"
+author: "Ruty Korotaev"
+date: "March 13, 2023"
+abstract: "Amid trends of growing antisemitism in the United States and across much of the Western world, this report will look at survey data of American Jews between the years 2000 and 2021. The report explored variables related to how Jewish respondents identified, how closely affiliated they were to their identities, as well as demographic data related to their specific Jewish denominations, spousal religion, and upbringing. This data demonstrates that over the last 20 years_____"
+format: pdf
+editor: visual
+---
+
+## Introduction
+
+This paper will be about Jewish life in America, based on data collected from the United States' General Social Survey.
+
+## Data
+
+As mentioned, this data was collected from the United States' General Social Survey, which works to \_\_\_\_.
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-one
+#| fig-cap: "Jewish denominations most common in the United States"
+
+
+```
+
+## Results
+
+Based on the above visualizations, it is clear that Jewish life and identity within the United States changes based on the real or percieved threats of antisemitism.
+
+Additionally, as the data shows, the demographic that is growing the most -- Orthodox and immigrant Jews -- is frequently left out of the conversation surrounding Jewish life in the United States, with many of the Jewish voices being of those who are at two to three generations living in the US, most commonly those who are of the reform denomination.
+
+## Discussion
+
+## Appendix: Supplemental Survey
+
+This survey could be improved in a variety of ways. Below are questions that would have help strengthen the quality of the questions, as they provide more nuance and understanding.
