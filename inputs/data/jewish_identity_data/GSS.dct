@@ -1,0 +1,8 @@
+
+infile dictionary {
+
+_column(1) 	 numeric 		 BALLOT 		 %20f 		 "ballot used for interview" 
+_column(3) 	 numeric 		 JEW 		 %20f 		 "what sort of jew r is" 
+_column(8) 	 numeric 		 YEAR 		 %20f 		 "GSS year for this respondent" 
+_column(13) 	 numeric 		 ID_ 		 %20f 		 "Respondent id number" 
+}
