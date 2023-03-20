@@ -1,26 +1,27 @@
 #### Preamble ####
-# Purpose: Cleans.... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Data: 11 February 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Cleans GSS to include data from 2000-2021 
+# Author: Ruty Korotaev
+# Data: March 20, 2023
+# Contact: ruty.korotaiev@mail.utoronto.ca
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: None
 
-
-#### Workspace setup ####
+# Workspace setup
 library(tidyverse)
-# [...UPDATE THIS...]
+library(dplyr)
+library(lubridate)
 
-#### Clean data ####
-# [...UPDATE THIS...]
-raw_data <- read_csv("inputs/data/raw_data.csv")
+# Clean data
+raw_respondent_data <- read.csv(file = "inputs/data/raw_respondent_info.csv")
+clean_respondent_data <- raw_respondent_data %>%
+  filter(year >= 2000 & year <= 2021) 
 
+test <- unique(clean_respondent_data$jew)
 
+no_missing_data <- na.omit(clean_respondent_data)
 
+# Save data
 
-#### Save data ####
-# [...UPDATE THIS...]
 # change cleaned_data to whatever name you end up with at the end of cleaning
 write_csv(cleaned_data, "outputs/data/cleaned_data.csv")
 

@@ -1,28 +1,25 @@
 # Purpose: Downloads and saves the data from the US General Social Survey
 # Author: Ruty Korotaev
-# Data: March 13, 2023
+# Data: March 20, 2023
 # Contact: ruty.korotaiev@mail.utoronto.ca
 # License: MIT
+#Pre-requisites: None
 
-#### Workspace setup ####
+# Workspace setup #
 library(opendatatoronto)
 library(haven)
 
-#### Download data ####
-
-# Download & unzip all the GSS data across the years
+# Download data 
 zip_file <- "inputs/data/large_files/GSS_stata.zip"
 
 download.file("https://gss.norc.org/documents/stata/GSS_stata.zip", zip_file)
 unzip(zip_file, exdir = "inputs/data/large_files")
 
-# read dta data and write to csv
-raw_gss_data <- read_dta("inputs/data/large_files/gss7221_r3a.dta")
+# Read DTA data and convert to csv
+raw_respondent_data <- read_dta("inputs/data/large_files/gss7221_r3b.dta")
 
-
-## Filter and save data related to respondent info and survey questions
-
-# Respondent information
+# Extract Variables from GSS
+library(dplyr)
 raw_respondent_info <-
   raw_gss_data |>
   select(
@@ -40,9 +37,6 @@ raw_respondent_info <-
     spothjew
   )
 
-write_csv(
-  x = raw_jew_info,
-  file = "inputs/data/raw_jew_info.csv"
-)
-
+write.csv(x = raw_respondent_info,
+  file = "inputs/data/raw_respondent_info.csv")
          

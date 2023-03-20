@@ -9,11 +9,15 @@ editor: visual
 
 ## Introduction
 
-This paper will be about Jewish life in America, based on data collected from the United States' General Social Survey.
+This paper focuses on analyzing Jewish life and identity in America from 2000 to 2021, based on data collected from the United States' General Social Survey. Amid a rise in antisemitism, particularly in the mainstream,
+
+The US General Survey is a national survey conducted periodically to collect data on various aspects of American life, including demographic, social, and economic factors. One important aspect of this survey is the collection of data on religious affiliation, which allows researchers to track the size and characteristics of different religious groups in the United States. Within this framework, the survey also collects data on Jewish Americans, including their religious beliefs and practices, demographic characteristics, and social and economic status. This data can be used by policymakers, academics, and community leaders to better understand and address the needs and experiences of Jewish Americans, as well as to promote interfaith understanding and cooperation.
+
+There a several other databases that are updated annually, which look at various trends in America's Jewish community. The most notable one is conducted by the Pew Research Center, the last iteration of which was published in May 2021 and revealed several important findings about the characteristics, beliefs, and experiences of this population. One key finding was that the American Jewish population is becoming increasingly diverse, with growing numbers of Jews of color and Jews who identify as non-binary or transgender. The study also found that younger Jews are less religiously observant than older generations, with higher rates of intermarriage and lower levels of synagogue attendance. Additionally, the study highlighted the importance of Jewish identity to many American Jews, with 75% saying that being Jewish is either very important or somewhat important to them. Finally, the study explored political views among American Jews, finding that a majority identify as Democrats and that there are significant differences in political attitudes between Orthodox and non-Orthodox Jews. (ADD CITATIONS)
 
 ## Data
 
-As mentioned, this data was collected from the United States' General Social Survey, which works to \_\_\_\_.
+This paper uses data collected from the US General Survey, and visualizes data related to Jewish identity and practise. As part of this, the main variables that were used in this project include year, age, respondent ID, what denomination of Judaism they ascribe to, whether they were raised as Jews and if they still identify as Jews, as well as marital information, including whether their spouses were Jewish and if they were also raised as Jews. This paper uses R \[\@citeR\] to analyze a dataset from the US General Survey which shares data on the population flow within Toronto's shelter system. In addition, several R packages were included in the project, including "tidyverse" \[\@citetidyverse\], "dplyr" \[\@citedplyr\], "kableExtra" \[\@citekableExtra\], and "knitr" \[\@citeknitr\].
 
 ```{r}
 1 + 1
@@ -38,6 +42,10 @@ Additionally, as the data shows, the demographic that is growing the most -- Ort
 
 ## Discussion
 
+The data demonstrates that over the last 20 years....
+
 ## Appendix: Supplemental Survey
 
-This survey could be improved in a variety of ways. Below are questions that would have help strengthen the quality of the questions, as they provide more nuance and understanding.
+This survey could be improved in a variety of ways. First, given the fact that there is a massive amount of missing data in the survey, it seems to indicate that not very many Jews were actually interviewed for this survey. I believe that the survey should have focused on people who identify as Jews, the way that the Pew Research Centre does it, in order to avoid having so much missing data.
+
+The questions for the survey could have been more nuanced or detailed.
