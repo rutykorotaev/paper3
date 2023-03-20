@@ -25,6 +25,7 @@ raw_respondent_info <-
   select(
     year,
     id,
+    relig,
     jewaj,
     othjew,
     jew,
