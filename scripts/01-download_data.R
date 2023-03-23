@@ -1,6 +1,6 @@
 # Purpose: Downloads and saves the data from the US General Social Survey
 # Author: Ruty Korotaev
-# Data: March 20, 2023
+# Data: March 13, 2023
 # Contact: ruty.korotaiev@mail.utoronto.ca
 # License: MIT
 #Pre-requisites: None
