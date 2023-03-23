@@ -11,11 +11,16 @@ library(tidyverse)
 library(dplyr)
 library(lubridate)
 
-# Clean data to include only people who identified as Jews and show only data from 1988-2021 when the additional identity questions were asked in the survey
+# Clean data to include only people who identified as Jewish, show only 1988-2021 data, and remove empty columns.
 raw_respondent_data <- read.csv(file = "inputs/data/raw_respondent_info.csv")
 clean_respondent_data <- raw_respondent_data %>%
-  filter(relig == 3 & year >= 1988 & year <= 2021)
+  filter(relig == 3 & year >= 1988 & year <= 2021) %>%
+  select("X", "year", "relig", "jew", "age", "spjew", "jew16", "spjew16", "marital")
 
 # Save data
 write_csv(clean_respondent_data, "outputs/cleaned_respondent_data.csv")
 
+#Lint script
+library(lintr)
+lint("paper3/scripts.R")
+lint("02-data_cleaning.R)

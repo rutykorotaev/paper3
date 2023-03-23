@@ -12,3 +12,9 @@ library(tidyverse)
 #Test 2
 
 #Test 3
+
+
+#Lint script
+library(lintr)
+lint("paper3/scripts.R")
+lint("04-test_data)

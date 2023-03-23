@@ -17,5 +17,10 @@ tibble(
   openly_identified_jews = runif(n = 20, min = 1, max = 500)
 )
 
+#Lint data
+library(lintr)
+lint("paper3/scripts.R")
+lint("00-simulate_data.R)
+
 
 

@@ -35,9 +35,16 @@ raw_respondent_data <-
     denom,
     jew16,
     spjew16,
-    spothjew
+    spothjew,
+    marital
   )
 
 write.csv(x = raw_respondent_data,
   file = "inputs/data/raw_respondent_info.csv")
+
+#Lint script
+library(lintr)
+lint("paper3/scripts.R")
+lint("01-download_data.R)
+
          
