@@ -16,11 +16,11 @@ download.file("https://gss.norc.org/documents/stata/GSS_stata.zip", zip_file)
 unzip(zip_file, exdir = "inputs/data/large_files")
 
 # Read DTA data and convert to csv
-raw_respondent_data <- read_dta("inputs/data/large_files/gss7221_r3b.dta")
+raw_gss_data <- read_dta("inputs/data/large_files/gss7221_r3b.dta")
 
 # Extract Variables from GSS
 library(dplyr)
-raw_respondent_info <-
+raw_respondent_data <-
   raw_gss_data |>
   select(
     year,
@@ -38,6 +38,6 @@ raw_respondent_info <-
     spothjew
   )
 
-write.csv(x = raw_respondent_info,
+write.csv(x = raw_respondent_data,
   file = "inputs/data/raw_respondent_info.csv")
          

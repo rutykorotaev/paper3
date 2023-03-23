@@ -11,17 +11,11 @@ library(tidyverse)
 library(dplyr)
 library(lubridate)
 
-# Clean data
+# Clean data to include only people who identified as Jews
 raw_respondent_data <- read.csv(file = "inputs/data/raw_respondent_info.csv")
 clean_respondent_data <- raw_respondent_data %>%
-  filter(year >= 2000 & year <= 2021) 
-
-test <- unique(clean_respondent_data$jew)
-
-no_missing_data <- na.omit(clean_respondent_data)
+  filter(relig == 3 & year >= 1988 & year <= 2021)
 
 # Save data
-
-# change cleaned_data to whatever name you end up with at the end of cleaning
-write_csv(cleaned_data, "outputs/data/cleaned_data.csv")
+write_csv(clean_respondent_data, "inputs/data/cleaned_respondent_data.csv")
 
