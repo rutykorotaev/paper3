@@ -2,22 +2,28 @@
 title: "'Death Con Three on the Jews': An Analysis of Jewish Life in America Amid Trends of Growing Antisemitism"
 author: "Ruty Korotaev"
 date: "March 25, 2023"
-abstract: "Amid trends of growing antisemitism in the United States and across much of the Western world, this report will look at survey data of American Jews between the years 2000 and 2021. The report explored variables related to how Jewish respondents identified, how closely affiliated they were to their identities, as well as demographic data related to their specific Jewish denominations, spousal religion, and upbringing. This data demonstrates that over the last 20 years_____"
+abstract: "Amid trends of growing antisemitism in the United States and across the world, this report will look at survey data of American Jews between the years 1988 and 2021. The report explored variables related to how Jewish respondents identified themselves, their religious denominations, upbringing information, spousal data, and more. This data demonstrates that since 1988, there has been a considerable ____. "
 format: pdf
 editor: visual
 ---
 
 ## Introduction
 
-This paper focuses on analyzing Jewish life and identity in America from 2000 to 2021, based on data collected from the United States' General Social Survey.
+In October 2022, rapper Kanye West went on a Twitter rampage, claiming that he will be going "death con three on the Jewish people," and yet, ascertaining that he cannot be an antisemite because "black people are actually Jew \[sic\]." In the same Tweet, West alludes to the centuries-old belief that the Jewish people have control over the media and are able to remove any person that opposes their collective "agenda." While antisemitic remarks such as these are not new, Kanye West's openness and readiness to target Jewish people online is demonstrative of a larger trend throughout the United States and much of the Western world, which seems to push antisemitism from the margins of society into the mainstream. In this political context, this will use data collected from Jewish respondents participating in the U.S. General Survey (GSS) between 1988 and 2021, in order to understand the state of Jewish life in the U.S., how it has changed over the last few decades, and what indicators contribute to high Jewish affiliation later in life.
 
-The US General Survey is a national survey conducted periodically to collect data on various aspects of American life, including demographic, social, and economic factors. One important aspect of this survey is the collection of data on religious affiliation, which allows researchers to track the size and characteristics of different religious groups in the United States. Within this framework, the survey also collects data on Jewish Americans, including their religious beliefs and practices, demographic characteristics, and social and economic status. This data can be used by policymakers, academics, and community leaders to better understand and address the needs and experiences of Jewish Americans, as well as to promote interfaith understanding and cooperation.
+For context, the GSS is a national survey conducted periodically to collect data on various aspects of American life, including demographic, social, and economic factors. One important aspect of this survey is the collection of data on religious affiliation, which allows researchers to track the size and characteristics of different religious groups in the United States. Within this framework, the survey also collects data on Jewish Americans, including their religious beliefs and practices, demographic characteristics, education, and their social and economic status.
 
-There a several other databases that are updated annually, which look at various trends in America's Jewish community. The most notable one is conducted by the Pew Research Center, the last iteration of which was published in May 2021 and revealed several important findings about the characteristics, beliefs, and experiences of this population. One key finding was that the American Jewish population is becoming increasingly diverse, with growing numbers of Jews of color and Jews who identify as non-binary or transgender. The study also found that younger Jews are less religiously observant than older generations, with higher rates of intermarriage and lower levels of synagogue attendance. Additionally, the study highlighted the importance of Jewish identity to many American Jews, with 75% saying that being Jewish is either very important or somewhat important to them. Finally, the study explored political views among American Jews, finding that a majority identify as Democrats and that there are significant differences in political attitudes between Orthodox and non-Orthodox Jews. (ADD CITATIONS)
+In addition, there are several other databases that are updated regularly which look at various trends in America's Jewish community. The most notable report is conducted by the Pew Research Center, the last iteration of which was published in May 2021 and revealed several important findings about the characteristics, beliefs, and experiences of this population. One key finding was that the American Jewish population is becoming increasingly diverse, with growing numbers of Jews of colour and Jews who identify as non-binary or transgender. The study also found that younger Jews are less religiously observant than older generations, with higher rates of intermarriage and lower levels of synagogue attendance. Additionally, the study highlighted the importance of Jewish identity to many American Jews, with 75% saying that being Jewish is either very important or somewhat important to them. Finally, the study explored political views among American Jews, finding that a majority identify as Democrats and that there are significant differences in political attitudes between Orthodox and non-Orthodox Jews \[\@citepewresearch\].
 
-## Data
+While the GSS was not nearly as comprehensive as the Pew Research Study, the findings of this paper seek to corroborate some of the findings that were featured in Pew's research, to gain a more fulsome understanding of Jewish life in the United States.
 
-This paper uses data collected from the US General Survey, and visualizes data related to Jewish identity and practise. As part of this, the main variables that were used in this project include year, age, respondent ID, what denomination of Judaism they ascribe to, whether they were raised as Jews and if they still identify as Jews, as well as marital information, including whether their spouses were Jewish and if they were also raised as Jews. This paper uses R \[\@citeR\] to analyze a dataset from the US General Survey which shares data on the population flow within Toronto's shelter system. In addition, several R packages were included in the project, including "tidyverse" \[\@citetidyverse\], "dplyr" \[\@citedplyr\], "kableExtra" \[\@citekableExtra\], and "knitr" \[\@citeknitr\].
+## Data Introduction
+
+This paper uses data collected from the US General Survey, and visualizes data related to Jewish identity and practice. As part of this, the main variables that were used in this project include year, age, respondent ID, what denomination of Judaism they ascribe to, whether they were raised as Jews and if they still identify as Jews, as well as marital information, including whether their spouses were Jewish and if they were also raised as Jews. This paper uses R \[\@citeR\] to analyze a dataset from the US General Survey which shares data on the population flow within Toronto's shelter system. In addition, several R packages were included in the project, including "tidyverse" \[\@citetidyverse\], "dplyr" \[\@citedplyr\], "kableExtra" \[\@citekableExtra\], and "knitr" \[\@citeknitr\].
+
+## Jewish Denominations: Overview
+
+Within Judaism, there are numerous denominations that most members of the community tend to identify with. This section will show visualizations for the data collected on denominations, focusing specifically on those identifying in the three main groups, including Orthodox, Conservative, and Reform. @fig-reform-dem visualizes the amount of respondents who identified as Reform Jews, while @fig-conservative-dem shows who identified as Conservative, and @fig-orthodox-dem depicts the Orthodox respondents in the dataset.
 
 ```{r}
 1 + 1
@@ -28,37 +34,107 @@ This paper uses data collected from the US General Survey, and visualizes data r
 
 #load library 
 library(tidyverse)
-library(knitr)
+library(dplyr)
 
 #Load dataset
 clean_respondent_data <- 
   read_csv(here::here("outputs/cleaned_respondent_data.csv"))
 
 #Graph data
-clean_respondent_data |>
-  ggplot(aes(x = year, 
-             y = relig, 
-             color = jew16)) +
+clean_respondent_data %>% 
+  filter(jew == 3) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = jew)) +
   geom_line() +
   geom_point()+
   theme_classic() +
-  labs(
-    x = "Year",
-    y = "Jewish identity and raising"
+  labs(x = "Year", y = "Respondents Identifying as Reform"
   )
 
 ```
 
-You can add options to executable code like this
+```{r}
+1 + 1
+#| echo: false
+#| message: false
+#| label: fig-reform-dem
+#| tbl-cap: "Amount of Jewish respondents identifying with Reform Judaism"
+
+#load library 
+library(tidyverse)
+library(dplyr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data %>% 
+  filter(jew == 3) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = jew)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(x = "Year", y = "Respondents Identifying as Reform"
+  )
+```
 
 ```{r}
 #| echo: false
 #| message: false
-#| label: fig-one
-#| fig-cap: "Jewish denominations most common in the United States"
+#| label: fig-orthodox-dem
+#| fig-cap: "Amount of Jewish respondents identifying with Orthodox Judaism"
 
+#load library 
+library(tidyverse)
+library(dplyr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data %>% 
+  filter(jew == 1) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = jew)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(x = "Year", y = "Respondents Identifying as Orthodox"
+  )
 
 ```
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-conservative-dem
+#| fig-cap: "Amount of Jewish respondents identifying with Conservative Judaism"
+
+#load library 
+library(tidyverse)
+library(dplyr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data %>% 
+  filter(jew == 2) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = jew)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(x = "Year", y = "Respondents Identifying as Conservative"
+  )
+
+```
+
+In considering the amount of
 
 ## Results
 
