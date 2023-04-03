@@ -2,7 +2,7 @@
 title: "'Death Con Three on the Jews': An Analysis of Jewish Life in America Amid Trends of Growing Antisemitism"
 author: "Ruty Korotaev"
 date: "March 25, 2023"
-abstract: "Amid trends of growing antisemitism in the United States and across the world, this report will look at survey data of American Jews between the years 1988 and 2021. The report explored variables related to how Jewish respondents identified themselves, their religious denominations, upbringing information, spousal data, and more. This data demonstrates that since 1988, there has been a considerable ____. "
+abstract: "Amid trends of growing antisemitism in the United States and across the world, this report will look at survey data of American Jews between the years 1988 and 2021. The report explored variables related to how Jewish respondents identified themselves, their religious denominations, upbringing information, spousal data, and more. While there were numerous key issues with the GSS dataset, this report demonstrates that there has been a considerable shift in America's Jewish community since 1988, including in how people identify, intermarriage rates, and more."
 format: pdf
 editor: visual
 ---
@@ -131,23 +131,128 @@ clean_respondent_data %>%
   theme_classic() +
   labs(x = "Year", y = "Respondents Identifying as Conservative"
   )
+```
+
+In addition to just the demographic data, this report will also look at how one's denomination growing up can impact how a respondent identifies later on in life. @fig-upbringing looks at this correlation and how being raised with a denomination impacts identity later on.
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-upbringing
+#| fig-cap: "Correlation between upbringing and Jewish identity as an adult"
+library(tidyr)
+library(ggplot2)
+
+library(tidyr)
+library(ggplot2)
+
+clean_respondent_data %>%
+  pivot_longer(cols = c("jew16", "jew"), names_to = "upbringing", values_to = "value") %>%
+  ggplot(aes(x = variable, y = value, fill = variable)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_classic() +
+  labs(x = "Year", y = "Jewish Affiliation", fill = "Upbringing")
 
 ```
 
-In considering the amount of
+## Marital Data
+
+Among the chief findings in the Pew 2020 report on Jewish life in America was that intermarriage (marriages between Jews and those not identifying as Jews) was lower among Orthodox Jews, and higher among those affiliated with the Reform movement. This section seeks to corroborate and see whether this was also a finding in the GSS data. In @fig-conservative-marriage, @fig-reform-marriage, and @fig-orthodox-marriage, we look at how members of the three main denominations have chosen their life partners and what denomination they ascribe to.
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-reform-marriage
+#| fig-cap: "Marriage statistics in Reform Judaism"
+
+#load library 
+library(tidyverse)
+library(dplyr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data %>% 
+  filter(jew == 3, spjew %in% c(1, 2, 3, 4, 5)) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = spjew)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(x = "Year", y = "Marriage"
+  )
+
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-orthodox-marriage
+#| fig-cap: "Marriage statistics in Orthodox Judaism"
+
+#load library 
+library(tidyverse)
+library(dplyr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data %>% 
+  filter(jew == 1, spjew %in% c(1, 2, 3, 4, 5)) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = spjew)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(x = "Year", y = "Marriage"
+  )
+
+
+```
+
+```{r}
+#| echo: false
+#| message: false
+#| label: fig-conservative-marriage
+#| fig-cap: "Marriage statistics in Conservative Judaism"
+
+#load library 
+library(tidyverse)
+library(dplyr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data %>% 
+  filter(jew == 2, spjew %in% c(1, 2, 3, 4, 5)) %>%
+  ggplot(aes(x = year, y = jew, 
+             color = spjew)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(x = "Year", y = "Marriage"
+  )
+
+```
 
 ## Results
 
-Based on the above visualizations, it is clear that Jewish life and identity within the United States changes based on the real or percieved threats of antisemitism.
+The results of the above visualizations demonstrate that Jewish life in the United States has diverse and dynamic, which contradicts the often-used antisemitic trope that tends to homogenize the entire community. In the Jewish demographic data section, it can be noted that the majority of respondents identify as either Reform, Orthodox, or Conservative, and that the upbringing can play a key role in the ways people identify later on in life.
 
-Additionally, as the data shows, the demographic that is growing the most -- Orthodox and immigrant Jews -- is frequently left out of the conversation surrounding Jewish life in the United States, with many of the Jewish voices being of those who are at two to three generations living in the US, most commonly those who are of the reform denomination.
+Further, in the marital data section, we can see how the various denominations choose their spouses is often based on their own identities and religious affiliations. Much in line with the Pew research report, there was a much lower intermarriage rate amount Orthodox Jews, who typically married those who were also part of the Orthodox community. At the same time, intermarriage was higher among Conservative and Reform Jews, who typically are not as strict in their religious practice as Orthodox Jews.
 
 ## Discussion: Data Findings
 
-The data demonstrates that there have been several key changes within American Jewish life since the
+The data demonstrates that there have been several key changes within American Jewish life since the late 1980s, when this survey data first started to be collected.
 
 ## Discussion: Survey Limitations
 
-This survey could be improved in a variety of ways. First, given the fact that there is a massive amount of missing data in the survey, it seems to indicate that not very many Jews were actually interviewed for this survey. I believe that the survey should have focused on people who identify as Jews, the way that the Pew Research Centre does it, in order to avoid having so much missing data.
+This survey could be improved in a variety of ways, most notably in the fact that there is a great deal of missing data, with almost entire variables having blank columns. While it is made clear that this survey was not meant to specifically target the Jewish community, in attempting to include people from all religious groups and denominations, it effectively leaves the dataset with little information at all. As such, in attempting to understand the various religious communites throughout the United States, it may be helpful to have more targeted, specialized surveys in order to better understand these demographics.
 
-The questions for the survey could have been more nuanced or detailed.
+Further, while the survey seems to do a good job in identifying factors such as upbringing and spousal choices as being key aspects of Jewish life, it fails to represent the many nuances that exist within the Jewish community. This starts with the denominations themselves -- GSS only looked at three main denominations, but failed to include the many other ones that exist in the community, including Haredi, Reconstructionist, and Modern Orthodox, as well as omitting the many Jews who identify as culturally Jewish but are non-practicing. It also fails to ask the respondents about their own Jewish cultural background, including whether they are Ashkenazi, Sephardi, or Mizrahi, which is also a key part of many Jewish people's identities and practices. Further, GSS does not include any data on immigrant Jews who make up a growing amount of percentage of Jews living in the United States in recent years, including those hailing from the former Soviet Union, Israel and the Middle East, Europe, North Africa, and other regions. Overall, the GSS dataset was lacking in both nuance and responses, making it difficult to work with and to come to proper conclusions.
