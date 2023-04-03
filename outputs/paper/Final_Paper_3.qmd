@@ -142,11 +142,11 @@ Based on the above visualizations, it is clear that Jewish life and identity wit
 
 Additionally, as the data shows, the demographic that is growing the most -- Orthodox and immigrant Jews -- is frequently left out of the conversation surrounding Jewish life in the United States, with many of the Jewish voices being of those who are at two to three generations living in the US, most commonly those who are of the reform denomination.
 
-## Discussion
+## Discussion: Data Findings
 
-The data demonstrates that over the last 20 years....
+The data demonstrates that there have been several key changes within American Jewish life since the
 
-## Appendix: Supplemental Survey
+## Discussion: Survey Limitations
 
 This survey could be improved in a variety of ways. First, given the fact that there is a massive amount of missing data in the survey, it seems to indicate that not very many Jews were actually interviewed for this survey. I believe that the survey should have focused on people who identify as Jews, the way that the Pew Research Centre does it, in order to avoid having so much missing data.
 
