@@ -26,7 +26,6 @@ This paper uses data collected from the US General Survey, and visualizes data r
 Within Judaism, there are numerous denominations that most members of the community tend to identify with. This section will show visualizations for the data collected on denominations, focusing specifically on those identifying in the three main groups, including Orthodox, Conservative, and Reform. @fig-reform-dem visualizes the amount of respondents who identified as Reform Jews, while @fig-conservative-dem shows who identified as Conservative, and @fig-orthodox-dem depicts the Orthodox respondents in the dataset.
 
 ```{r}
-1 + 1
 #| echo: false
 #| message: false
 #| label: fig- 
@@ -54,7 +53,6 @@ clean_respondent_data %>%
 ```
 
 ```{r}
-1 + 1
 #| echo: false
 #| message: false
 #| label: fig-reform-dem
@@ -140,18 +138,17 @@ In addition to just the demographic data, this report will also look at how one'
 #| message: false
 #| label: fig-upbringing
 #| fig-cap: "Correlation between upbringing and Jewish identity as an adult"
-library(tidyr)
-library(ggplot2)
 
 library(tidyr)
 library(ggplot2)
 
 clean_respondent_data %>%
-  pivot_longer(cols = c("jew16", "jew"), names_to = "upbringing", values_to = "value") %>%
-  ggplot(aes(x = variable, y = value, fill = variable)) +
+  select(year, jew, spjew) %>% 
+  # pivot_longer(cols = c("jew16", "jew"), names_to = "upbringing", values_to = "value") %>%
+  ggplot(aes(x = year, y = spjew)) +
   geom_bar(stat = "identity", position = "dodge") +
   theme_classic() +
-  labs(x = "Year", y = "Jewish Affiliation", fill = "Upbringing")
+  labs(x = "Year", y = "Jewish Affiliation")
 
 ```
 
