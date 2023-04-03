@@ -5,6 +5,8 @@ date: "March 25, 2023"
 abstract: "Amid trends of growing antisemitism in the United States and across the world, this report will look at survey data of American Jews between the years 1988 and 2021. The report explored variables related to how Jewish respondents identified themselves, their religious denominations, upbringing information, spousal data, and more. While there were numerous key issues with the GSS dataset, this report demonstrates that there has been a considerable shift in America's Jewish community since 1988, including in how people identify, intermarriage rates, and more."
 format: pdf
 editor: visual
+thanks: "Code can be found at https://github.com/rutykorotaev/paper3" 
+bibliography: references.bib
 ---
 
 ## Introduction
