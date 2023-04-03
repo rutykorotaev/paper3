@@ -1,7 +1,7 @@
 ---
 title: "'Death Con Three on the Jews': An Analysis of Jewish Life in America Amid Trends of Growing Antisemitism"
 author: "Ruty Korotaev"
-date: "March 13, 2023"
+date: "March 25, 2023"
 abstract: "Amid trends of growing antisemitism in the United States and across much of the Western world, this report will look at survey data of American Jews between the years 2000 and 2021. The report explored variables related to how Jewish respondents identified, how closely affiliated they were to their identities, as well as demographic data related to their specific Jewish denominations, spousal religion, and upbringing. This data demonstrates that over the last 20 years_____"
 format: pdf
 editor: visual
@@ -9,7 +9,7 @@ editor: visual
 
 ## Introduction
 
-This paper focuses on analyzing Jewish life and identity in America from 2000 to 2021, based on data collected from the United States' General Social Survey. Amid a rise in antisemitism, particularly in the mainstream,
+This paper focuses on analyzing Jewish life and identity in America from 2000 to 2021, based on data collected from the United States' General Social Survey.
 
 The US General Survey is a national survey conducted periodically to collect data on various aspects of American life, including demographic, social, and economic factors. One important aspect of this survey is the collection of data on religious affiliation, which allows researchers to track the size and characteristics of different religious groups in the United States. Within this framework, the survey also collects data on Jewish Americans, including their religious beliefs and practices, demographic characteristics, and social and economic status. This data can be used by policymakers, academics, and community leaders to better understand and address the needs and experiences of Jewish Americans, as well as to promote interfaith understanding and cooperation.
 
@@ -21,6 +21,32 @@ This paper uses data collected from the US General Survey, and visualizes data r
 
 ```{r}
 1 + 1
+#| echo: false
+#| message: false
+#| label: fig- 
+#| tbl-cap: "Amount of Jewish respondents between being raised in Reform Judaism"
+
+#load library 
+library(tidyverse)
+library(knitr)
+
+#Load dataset
+clean_respondent_data <- 
+  read_csv(here::here("outputs/cleaned_respondent_data.csv"))
+
+#Graph data
+clean_respondent_data |>
+  ggplot(aes(x = year, 
+             y = relig, 
+             color = jew16)) +
+  geom_line() +
+  geom_point()+
+  theme_classic() +
+  labs(
+    x = "Year",
+    y = "Jewish identity and raising"
+  )
+
 ```
 
 You can add options to executable code like this
